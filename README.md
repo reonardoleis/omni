@@ -29,8 +29,6 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`omni hello PERSON`](#omni-hello-person)
-* [`omni hello world`](#omni-hello-world)
 * [`omni help [COMMAND]`](#omni-help-command)
 * [`omni plugins`](#omni-plugins)
 * [`omni plugins add PLUGIN`](#omni-plugins-add-plugin)
@@ -42,48 +40,7 @@ USAGE
 * [`omni plugins uninstall [PLUGIN]`](#omni-plugins-uninstall-plugin)
 * [`omni plugins unlink [PLUGIN]`](#omni-plugins-unlink-plugin)
 * [`omni plugins update`](#omni-plugins-update)
-
-## `omni hello PERSON`
-
-Say hello
-
-```
-USAGE
-  $ omni hello PERSON -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Who is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ omni hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [src/commands/hello/index.ts](https://github.com/reonardoleis/omni/blob/v0.0.0/src/commands/hello/index.ts)_
-
-## `omni hello world`
-
-Say hello world
-
-```
-USAGE
-  $ omni hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ omni hello world
-  hello world! (./src/commands/hello/world.ts)
-```
-
-_See code: [src/commands/hello/world.ts](https://github.com/reonardoleis/omni/blob/v0.0.0/src/commands/hello/world.ts)_
+* [`omni video grab URL OUTPUTDIR`](#omni-video-grab-url-outputdir)
 
 ## `omni help [COMMAND]`
 
@@ -393,4 +350,25 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.0.18/src/commands/plugins/update.ts)_
+
+## `omni video grab URL OUTPUTDIR`
+
+Download a video from a URL. If it is a playlist, download all videos in the playlist.
+
+```
+USAGE
+  $ omni video grab URL OUTPUTDIR
+
+ARGUMENTS
+  URL        URL of the video/playlist to download
+  OUTPUTDIR  Output directory
+
+DESCRIPTION
+  Download a video from a URL. If it is a playlist, download all videos in the playlist.
+
+EXAMPLES
+  $ omni video grab
+```
+
+_See code: [src/commands/video/grab.ts](https://github.com/reonardoleis/omni/blob/v0.0.0/src/commands/video/grab.ts)_
 <!-- commandsstop -->
