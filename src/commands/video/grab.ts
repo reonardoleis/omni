@@ -1,5 +1,6 @@
 import {Args, Command} from '@oclif/core'
-import {grab} from '../../core/video/grab/index.js'
+import * as fs from 'fs'
+import {download} from '../../core/video/grab/index.js'
 
 export default class Grab extends Command {
   static override args = {
@@ -18,8 +19,17 @@ export default class Grab extends Command {
       args: {url, outputDir},
     } = await this.parse(Grab)
 
-    this.log(`Downloading video from ${url}`)
+    if (!fs.existsSync(outputDir)) {
+      this.warn(`Output directory ${outputDir} does not exist, it will be created`)
+      try {
+        fs.mkdirSync(outputDir, {recursive: true})
+      } catch (error: any) {
+        return this.error(`Failed to create output directory: ${error.message}`)
+      }
+    }
 
-    await grab(url, outputDir)
+    this.log(`Downloading video from ${url}...`)
+
+    download(url, outputDir)
   }
 }

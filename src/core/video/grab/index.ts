@@ -1,15 +1,6 @@
-import youtubedl from 'youtube-dl-exec'
+import {getProvider} from './providers.js'
 
-const grab = async (url: string, outputDir: string): Promise<void> => {
-  youtubedl.exec(
-    url,
-    {
-      format: 'bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]',
-    },
-    {
-      cwd: outputDir,
-    },
-  )
+export const download = async (url: string, outputDir: string): Promise<void> => {
+  const provider = getProvider(url)
+  await provider(url, outputDir)
 }
-
-export {grab}
